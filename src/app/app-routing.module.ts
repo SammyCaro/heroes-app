@@ -6,6 +6,13 @@ import { ErrorPageComponent } from './shared/error-page/error-page.component';
 
 const routes: Routes = [
   {
+    /* este será el path para las rutas hijas de este módulo */
+    path: 'auth',
+    /* carga los componentes del authModule de manera perezosa */
+    loadChildren: () =>
+      import('./auth/auth.module').then((module) => module.AuthModule),
+  },
+  {
     path: '404',
     component: ErrorPageComponent,
   },
