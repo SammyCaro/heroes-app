@@ -10,6 +10,12 @@ export class HeroesService {
   constructor(private http: HttpClient) {}
 
   getHeroes(): Observable<Heroes[]> {
-    return this.http.get<Heroes[]>('http://localhost:3000/heroes');
+    const url = `http://localhost:3000/heroes`;
+    return this.http.get<Heroes[]>(url);
+  }
+
+  getHeroesById(id: string): Observable<Heroes[]> {
+    const url = `http://localhost:3000/heroes/${id}`;
+    return this.http.get<Heroes[]>(url);
   }
 }
