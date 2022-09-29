@@ -13,7 +13,7 @@
       <strong>Primera aparición</strong>
       {{ heroes.first_appearance}}
       <br>
-      <strong>Personajes: {{ heroes.characters }}</strong>
+      <strong>Personajes: {{ heroeCharacters | slice:0:3 }}</strong>
     </p>
   </mat-card-content>
 

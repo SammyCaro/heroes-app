@@ -9,7 +9,7 @@ import { HeroesService } from '../../services/heroes.service';
   templateUrl: './agregar.component.html',
 })
 export class AgregarComponent implements OnInit {
-  heroes: Heroes[] = [];
+  heroes!: Heroes;
 
   constructor(
     private activatedRoute: ActivatedRoute,
