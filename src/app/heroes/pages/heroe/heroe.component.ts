@@ -11,7 +11,8 @@ import { HeroesService } from '../../services/heroes.service';
   styles: [
     `
       img {
-        width: 100%;
+        width: 90%;
+        max-height: 80vh;
         border-radius: 5px;
       }
     `,

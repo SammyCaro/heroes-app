@@ -18,9 +18,6 @@ export class HeroeTarjetaComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    //console.log(this.heroes.characters);
     this.heroeCharacters = this.heroes.characters.split(', ');
-    console.log('splited');
-    console.log(this.heroeCharacters);
   }
 }
