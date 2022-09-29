@@ -33,14 +33,17 @@ export class BuscarComponent implements OnInit {
   }
 
   opcionSeleccionada(event: MatAutocompleteSelectedEvent) {
+    //se evalua si llega algo en el value
     if (!event.option.value) {
       //si lo que llega es undefined se hace el return para que no lance error
       this.heroeSeleccionado = undefined;
       return;
     }
+    //el option.value son los datos del héroe que llega al buscar el término
     const heroe: Heroes = event.option.value;
     this.termino = heroe.superhero;
     console.log(heroe);
+    //se llama al servicio para obtener datos por ID
     this.heroesService.getHeroesById(heroe.id!).subscribe((heroes) => {
       this.heroeSeleccionado = heroes;
     });
