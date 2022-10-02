@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { switchMap } from 'rxjs/operators';
 import { Heroes, Publisher } from '../../interfaces/heroes.interface';
 import { HeroesService } from '../../services/heroes.service';
 
@@ -29,27 +27,26 @@ export class AgregarComponent implements OnInit {
     },
   ];
 
-  constructor(
-    private activatedRoute: ActivatedRoute,
-    private heroesService: HeroesService
-  ) {}
+  constructor(private heroesService: HeroesService) {}
 
-  ngOnInit(): void {
-    this.activatedRoute.params
-      .pipe(
-        switchMap(({ id }) => {
-          return this.heroesService.getHeroesById(id);
-        })
-      )
-      .subscribe(
-        (heroes) => {
-          this.heroe = heroes;
-          console.log(this.heroe);
-        },
-        (err) => {
-          this.heroe;
-          console.log(err);
-        }
-      );
+  ngOnInit(): void {}
+
+  save() {
+    if (this.heroe.superhero.trim().length === 0) {
+      return;
+    }
+
+    this.heroesService.addHero(this.heroe).subscribe((heroe) => {
+      console.log('Respuesta', heroe);
+    });
+
+    this.heroe = {
+      superhero: '',
+      publisher: Publisher.DCComics,
+      alter_ego: '',
+      first_appearance: '',
+      characters: '',
+      alt_img: '',
+    };
   }
 }
