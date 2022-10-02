@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { switchMap } from 'rxjs/operators';
-import { Heroes } from '../../interfaces/heroes.interface';
+import { Heroes, Publisher } from '../../interfaces/heroes.interface';
 import { HeroesService } from '../../services/heroes.service';
 
 @Component({
@@ -9,7 +9,25 @@ import { HeroesService } from '../../services/heroes.service';
   templateUrl: './agregar.component.html',
 })
 export class AgregarComponent implements OnInit {
-  heroes!: Heroes;
+  heroe: Heroes = {
+    superhero: '',
+    publisher: Publisher.DCComics,
+    alter_ego: '',
+    first_appearance: '',
+    characters: '',
+    alt_img: '',
+  };
+
+  publishers = [
+    {
+      id: 'DC Comics',
+      desc: 'DC - Comics',
+    },
+    {
+      id: 'Marvel Comics',
+      desc: 'Marvel - Comics',
+    },
+  ];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -25,11 +43,11 @@ export class AgregarComponent implements OnInit {
       )
       .subscribe(
         (heroes) => {
-          this.heroes = heroes;
-          console.log(this.heroes);
+          this.heroe = heroes;
+          console.log(this.heroe);
         },
         (err) => {
-          this.heroes;
+          this.heroe;
           console.log(err);
         }
       );
