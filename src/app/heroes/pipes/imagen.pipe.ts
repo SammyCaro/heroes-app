@@ -6,7 +6,16 @@ import { Heroes } from '../interfaces/heroes.interface';
 })
 export class ImagenPipe implements PipeTransform {
   transform(heroes: Heroes): string {
-    let id = heroes.id;
-    return `assets/heroes/${id}.jpg`;
+    if (
+      !heroes.id?.includes('marvel') &&
+      !heroes.id?.includes('dc') &&
+      !heroes.alt_img
+    ) {
+      return `assets/no-image.png`;
+    } else if (heroes.alt_img) {
+      return heroes.alt_img;
+    } else {
+      return `assets/heroes/${heroes.id}.jpg`;
+    }
   }
 }
