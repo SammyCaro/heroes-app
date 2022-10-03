@@ -85,4 +85,10 @@ export class AgregarComponent implements OnInit {
       alt_img: '',
     };
   }
+
+  remove() {
+    this.heroesService
+      .deleteHero(this.heroe.id!)
+      .subscribe((resp) => this.router.navigate(['/heroes']));
+  }
 }

@@ -17,7 +17,6 @@
         <mat-label>Alter Ego</mat-label>
         <input matInput type="text" required [(ngModel)]="heroe.alter_ego">
       </mat-form-field>
-
     </div>
 
     <mat-form-field>
@@ -45,9 +44,17 @@
     </mat-form-field>
 
     <br>
-    <button mat-raised-button color="primary" (click)="save()">
-      <mat-icon>edit</mat-icon> Guardar
-    </button>
+    <div fxLayout>
+      <button mat-raised-button color="primary" (click)="save()">
+        <mat-icon>edit</mat-icon> Guardar
+      </button>
+
+      <span class="spacer"></span>
+      <!-- Si el heroe tiene un id aparece este botón (porque ya está agregado en la BD) -->
+      <button *ngIf="heroe.id" mat-raised-button color="warn" (click)="remove()">
+        <mat-icon>remove</mat-icon>Borrar
+      </button>
+    </div>
   </div>
 
   <div fxFlex="50">
