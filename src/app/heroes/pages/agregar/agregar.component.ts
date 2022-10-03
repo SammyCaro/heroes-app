@@ -47,10 +47,11 @@ export class AgregarComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    /* Si no estamos en la pantalla GUARDAR se hace return vacío para no cargue datos que no existen */
     if (!this.router.url.includes('editar')) {
       return;
     }
-
+    /* Si estamos en pantalla editar carga los datos*/
     this.activatedRoute.params
       .pipe(switchMap(({ id }) => this.heroesService.getHeroesById(id)))
       .subscribe((heroe) => (this.heroe = heroe));
