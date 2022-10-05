@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 /* componentes */
 import { ErrorPageComponent } from './shared/error-page/error-page.component';
+import { ListadoComponent } from './heroes/pages/listado/listado.component';
 
 const routes: Routes = [
   {
@@ -18,8 +19,9 @@ const routes: Routes = [
       import('./heroes/heroes.module').then((module) => module.HeroesModule),
   },
   {
-    path: '404',
-    component: ErrorPageComponent,
+    path: '',
+    loadChildren: () =>
+      import('./heroes/heroes.module').then((module) => module.HeroesModule),
   },
   {
     path: '**',

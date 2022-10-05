@@ -69,6 +69,7 @@ export class AgregarComponent implements OnInit {
     if (this.heroe.id) {
       this.heroesService.updateHero(this.heroe).subscribe((heroe) => {
         this.showSnackBar('Registro actualizado');
+        this.router.navigate(['/listado']);
       });
     } else {
       this.heroesService.addHero(this.heroe).subscribe((heroe) => {
